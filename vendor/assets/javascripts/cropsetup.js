@@ -15,8 +15,8 @@ $(function($){
     onSelect: updatePreview,
     bgOpacity: 0.5,
     aspectRatio: xsize / ysize,
-    minSize: [180, 180],  // set the min size
-    setSelect:   [0, 0, 180,180], // default select area
+    minSize: [90, 90],  // set the min size
+    setSelect:   [0, 0, 180, 180], // default select area
     allowSelect: false // don't allow use click the select
   },function(){
     // Use the API to get the real image size
