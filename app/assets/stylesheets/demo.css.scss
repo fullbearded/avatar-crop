@@ -33,7 +33,7 @@ blockquote:before, blockquote:after, q:before, q:after { content: ''; content: n
 strong { font-weight: bold; }
 
 table { border-collapse: collapse; border-spacing: 0; }
-img { border: 0; max-width: 100%; }
+img { border: 0;}
 
 /* Centered heading with rules */
 h1 {
@@ -128,38 +128,72 @@ header {
   box-shadow: inset 0 2px 13px -1px rgba(0,0,0,0.35);
 }
 
+div.modal.avatar-modal {
+  .modal-dialog {
+    .modal-content {
+      width: 820px;
+      height: auto;
+      left: 50%;
+      margin-left: -350px;
+      .modal-body {
+        padding: 0 50px;
+        .upload-header {
+          height: 60px;
+          line-height: 60px;
+          .notice {
+            font-size: 12px;
+            margin-left: 10px;
+            &.errors {
+              color: #ea6449;
+            }
+          }
+        }
+        .upload-content {
+          .preview {
+            float: left;
+            margin-right: 88px;
+            width: 450px;
+            height: 450px;
+            img {
+              width: 450px;
+              height: 450px;
+            }
 
-/* jcrop styles */
-.jc-demo-box {
-  position: relative;
-  text-align: left;
-  margin: 1.5em auto;
-  background: #fff;
-  -webkit-box-shadow: 0 3px 9px -1px rgba(0,0,0,0.75);
-  -moz-box-shadow: 0 3px 9px -1px rgba(0,0,0,0.75);
-  box-shadow: 0 3px 9px -1px rgba(0,0,0,0.75);
-  padding: 1em 2em 2em;
-}
-
-
-/* Apply these styles only when #preview-pane has
-   been placed within the Jcrop widget */
-.jcrop-holder #preview-pane {
-  display: block;
-  position: absolute;
-  z-index: 2000;
-  top: 10px;
-  right: -210px;
-  background-color: #fff;
-  padding: 6px;
-  border: 1px solid #bcbcbc;
-}
-
-/* The Javascript code will set the aspect ratio of the crop
-   area based on the size of the thumbnail preview,
-   specified here */
-#preview-pane .preview-container {
-  width: 150px;
-  height: 150px;
-  overflow: hidden;
+          }
+          .preview-thumb {
+            float: left;
+            background: #fff;
+            width: 180px;
+            .image-hint {
+              display: block;
+              line-height: 30px;
+            }
+            .middle-size {
+              .image-wrapper {
+                width: 180px;
+                height: 180px;
+                display: block;
+                overflow: hidden;
+              }
+            }
+            .small-size {
+              margin-top: 30px;
+              .image-wrapper {
+                display:block;
+                height: 30px;
+                width: 30px;
+                overflow: hidden;
+                border-radius: 50%;
+              }
+            }
+          }
+        }
+        .operation {
+          height: 67px;
+          line-height: 67px;
+          text-align: center;
+        }
+      }
+    }
+  }
 }

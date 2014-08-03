@@ -3,14 +3,10 @@ class Image
 
   field :ori_image
   field :thumbnail
-  field :pos
 
   mount_uploader :ori_image, CommonAvatarUploader
   mount_uploader :thumbnail, ThumbUploader
 
-  def thumb(options)
-    self.pos = options.slice(*%w|x y w h|.map(&:to_sym)).values.join(',')
+  attr_accessor :crop_x, :crop_y, :crop_w, :crop_h
 
-    self.thumbnail = self.ori_image
-  end
 end

@@ -3,48 +3,16 @@
 <head>
   <meta http-equiv="Content-type" content="text/html;charset=utf-8">
   <title>Jcrop Dynamic Avatar JS/PHP Demo</title>
-  <!--<link rel="stylesheet" type="text/css" href="css/styles.css">-->
-  <!--<link rel="stylesheet" type="text/css" href="css/jquery.Jcrop.css">-->
-  <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Wellfleet">
-  <!--<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>-->
-  <!--<script type="text/javascript" src="js/jquery.Jcrop.js"></script>-->
-  <!--<script type="text/javascript" src="js/cropsetup.js"></script>-->
-  <%= stylesheet_link_tag    'application', media: 'all' %>
-  <%= javascript_include_tag 'application'%>
+  <%= stylesheet_link_tag 'application', media: 'all' %>
+  <%= javascript_include_tag 'application' %>
 </head>
 
 <body>
 <div id="wrapper">
-  <div class="jc-demo-box">
-    <header>
-      <h1><span>Jcrop Live Avatar Demo</span></h1>
-    </header>
+  <a href="javascript:void(0);" class="btn btn-primary" data-toggle="modal" data-target="#set-avatar">upload avatar</a>
 
-    <%= file_field_tag :image, id: 'ori_image' %>
-
-    <%= image_tag 'cropimg.jpg', id: 'target', alt: '[Jcrop Example]' %>
-
-    <div id="preview-pane">
-      <div class="preview-container">
-        <%= image_tag 'cropimg.jpg', class: 'jcrop-preview', alt: 'Preview' %>
-      </div>
-    </div><!-- @end #preview-pane -->
-
-    <div id="form-container">
-      <form id="cropimg" name="cropimg" method="post" action="crop.php" target="_blank">
-        <input type="hidden" id="x" name="x">
-        <input type="hidden" id="y" name="y">
-        <input type="hidden" id="w" name="w">
-        <input type="hidden" id="h" name="h">
-        <input type="submit" id="submit" value="Crop Image!">
-      </form>
-    </div><!-- @end #form-container -->
-  </div><!-- @end .jc-demo-box -->
-
-  <div class="avatar">
-    <img src="">
-  </div>
-
-</div><!-- @end #wrapper -->
+  <%= image_tag @image.thumbnail? ? @image.thumbnail_url(:thumb) : 'avatar.jpg', alt: 'default avatar', width: 180, height: 180, id: 'index-avatar' %>
+  <%= render partial: 'avatar_modal' %>
+</div>
 </body>
 </html>

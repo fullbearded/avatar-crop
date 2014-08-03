@@ -2,28 +2,22 @@
 
 class ThumbUploader < BaseUploader
 
-  process :thumb_pos
+  version :thumb do
+    process :crop
+  end
 
-  def thumb_pos
-    manipulate! do |img|
-      if model.pos.present?
-        c = ::MiniMagick::CommandBuilder.new(:convert)
-        dst = Tempfile.new('thumb.jpg')
-        dst.binmode
-        dst.write model.ori_image.read
-        dst.close
+  version :thumb_small do
+    process :crop
+    process :resize_to_limit => [30, 30]
+  end
 
-        c.push dst.path
-        c.push '-crop'
-        pos = model.pos.split(',')
-        c.push "#{pos[2]}x#{pos[3]}+#{pos[0]}+#{pos[1]}"
-
-        c.push img.path
-
-        img.run(c)
+  def crop
+    if model.crop_x.present?
+      manipulate! do |img|
+        img.crop "#{model.crop_w}x#{model.crop_h}+#{model.crop_x}+#{model.crop_y}"
+        img = yield(img) if block_given?
+        img
       end
-      img = yield(img) if block_given?
-      img
     end
   end
 

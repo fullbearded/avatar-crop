@@ -1,0 +1,46 @@
+<div class="modal confirm avatar-modal fade" data-keyboard="false" data-backdrop="static" id="set-avatar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title">Setting Avatar</h4>
+      </div>
+      <div class="modal-body">
+        <div class="upload-header">
+          <label for="choose-image" class="btn btn-primary">Upload Photo</label>
+          <input class="choose-file hide" type="file" accept="image/*" id="choose-image">
+        </div>
+        <div class="upload-content clearfix">
+          <div class="preview">
+            <%= image_tag 'avatar.jpg', alt: 'default avatar', id: 'target' %>
+          </div>
+          <div class="preview-thumb">
+            <div class="middle-size">
+              <span class="image-wrapper">
+                <%= image_tag 'avatar.jpg', alt: 'default avatar' %>
+              </span>
+              <span class="image-hint">Middle Size 180px * 180px</span>
+            </div>
+
+            <div class="small-size">
+              <span class="image-wrapper">
+                <%= image_tag 'avatar.jpg', alt: 'default avatar' %>
+              </span>
+              <span class="image-hint">Small Size 30px * 30px</span>
+            </div>
+          </div>
+        </div>
+        <div class="operation">
+          <div class="buttons">
+            <a href="javascript:void(0);" class="btn btn-primary submit">crop</a>
+          </div>
+        </div>
+        <input type="hidden" id="crop-x" name="x"/>
+        <input type="hidden" id="crop-y" name="y"/>
+        <input type="hidden" id="crop-w" name="w"/>
+        <input type="hidden" id="crop-h" name="h"/>
+        <input type="hidden" id="uploaded" name="uploaded" value="false"/>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,17 +1,22 @@
 class ImageUploadController < ApplicationController
-  protect_from_forgery with: :null_session
+  skip_before_filter :verify_authenticity_token
 
-  def upload_origin_image
+  def create_avatar
     image = Image.new(ori_image: uploaded_file)
     image.save
-    render json: {img: 'http://localhost:3000' + image.ori_image_url, id: image.id.to_s}
+    render json: {origin_avatar: 'http://localhost:3000' + image.ori_image_url}
   end
 
-  def upload_thumbnail
+  def update_avatar
     image = Image.last
-    image.thumb(x: params[:x], y: params[:y], w: params[:w], h: params[:h])
+    image.attributes = params.permit(:crop_x, :crop_y, :crop_w, :crop_h)
+    if params[:uploaded] == 'true'
+      image.thumbnail = image.ori_image
+    else
+      image.thumbnail? ? image.thumbnail.recreate_versions! : image.thumbnail = File.new(Rails.root.join('app','assets', 'images', 'avatar.jpg'))
+    end
     image.save
-    render json: {img: 'http://localhost:3000' + image.thumbnail_url}
+    render json: {avatar: 'http://localhost:3000' + image.thumbnail_url(:thumb)}
   end
 
   private

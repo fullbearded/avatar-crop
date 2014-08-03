@@ -1,7 +1,6 @@
-source 'https://rubygems.org'
+# source 'https://rubygems.org'
+source 'http://ruby.taobao.org'
 
-
-# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.4'
 gem 'sass-rails', '~> 4.0.3'
 gem 'uglifier', '>= 1.3.0'
@@ -13,4 +12,9 @@ gem 'mongoid'
 gem 'carrierwave'
 gem 'carrierwave-mongoid'
 gem 'mini_magick'
-gem 'pry'
+
+group :development, :test do
+  gem 'pry'
+end
+
+
