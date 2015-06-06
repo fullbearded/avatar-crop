@@ -15,7 +15,7 @@ reference: http://blog.58share.com/?p=192
 
 Mac OS:
 <pre>
-brew install image_magick
+brew install imagemagick
 brew install mongodb
 </pre>
 
